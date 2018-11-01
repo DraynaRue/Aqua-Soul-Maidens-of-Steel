@@ -11,6 +11,9 @@ class MAIDENSOFSTEEL_API APlayerCamera : public APawn
 {
 	GENERATED_BODY()
 
+	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* CameraComponent;
+
 public:
 	// Sets default values for this pawn's properties
 	APlayerCamera();
