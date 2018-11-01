@@ -74,8 +74,10 @@ void APlayerPawn::ShotTimerExpired()
 
 void APlayerPawn::MoveForward(float ForwardValue)
 {
+	AddMovementInput(GetActorForwardVector() * ForwardValue * MoveSpeed);
 }
 
 void APlayerPawn::MoveRight(float RightValue)
 {
+	AddMovementInput(GetActorRightVector() * RightValue * MoveSpeed);	
 }
