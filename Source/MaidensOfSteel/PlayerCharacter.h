@@ -21,15 +21,23 @@ public:
 
 	/** Offset from the ships location to spawn projectiles */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		FVector GunOffset;
+	FVector GunOffset;
 
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float FireRate;
+	float FireRate;
 
 	/* The speed our ship moves around the level */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float MoveSpeed;
+	float MoveSpeed;
+
+	// HP at game start
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	float MaxHP;
+
+	// HP at current moment
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadOnly)
+	float CurrentHP;
 
 	FVector DesiredVelocity;
 
@@ -45,6 +53,9 @@ public:
 	/* Fire a shot in the specified direction */
 	void FireShotPress();
 	void FireShotRelease();
+
+	// Damages the player, reducing their currentHP
+	void TakeDamage();
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
