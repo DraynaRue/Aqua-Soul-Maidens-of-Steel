@@ -82,6 +82,11 @@ void APlayerCharacter::TakeDamage()
 	if (CurrentHP > 0)
 	{
 		CurrentHP--;
+
+		if (CurrentHP <= 0)
+		{
+			UGameplayStatics::OpenLevel(GetWorld(), "GameOverMap");
+		}
 	}
 }
 
