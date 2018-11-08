@@ -37,6 +37,8 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// Set current HP to the maximum set in the blueprint
+	CurrentHP = MaxHP;
 }
 
 // Called every frame
@@ -57,6 +59,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APlayerCharacter::FireShotPress);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &APlayerCharacter::FireShotRelease);
+	PlayerInputComponent->BindAction("Damage", IE_Pressed, this, &APlayerCharacter::TakeDamage);
 
 	// set up axis bindings
 	PlayerInputComponent->BindAxis("MoveForward", this, &APlayerCharacter::MoveForward);
@@ -72,6 +75,14 @@ void APlayerCharacter::FireShotPress()
 void APlayerCharacter::FireShotRelease()
 {
 	TriggerComponent->doFire = false;
+}
+
+void APlayerCharacter::TakeDamage()
+{
+	if (CurrentHP > 0)
+	{
+		CurrentHP--;
+	}
 }
 
 void APlayerCharacter::ShotTimerExpired()
