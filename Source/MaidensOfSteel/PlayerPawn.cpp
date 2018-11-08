@@ -74,8 +74,11 @@ void APlayerPawn::ShotTimerExpired()
 
 void APlayerPawn::MoveForward(float ForwardValue)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, FString::Printf(TEXT("%f"),ForwardValue));
+	AddMovementInput(GetActorForwardVector() * ForwardValue, MoveSpeed);
 }
 
 void APlayerPawn::MoveRight(float RightValue)
 {
+	AddMovementInput(GetActorRightVector() * RightValue, MoveSpeed);
 }
