@@ -13,6 +13,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "TriggerComponent.h"
+#include "SwitchController.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -39,6 +40,9 @@ void APlayerCharacter::BeginPlay()
 	
 	// Set current HP to the maximum set in the blueprint
 	CurrentHP = MaxHP;
+
+	ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
+	controller->AddPlayerToList(this);
 }
 
 // Called every frame
@@ -60,7 +64,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APlayerCharacter::FireShotPress);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &APlayerCharacter::FireShotRelease);
 	PlayerInputComponent->BindAction("Damage", IE_Pressed, this, &APlayerCharacter::TakeDamage);
-
+	PlayerInputComponent->BindAction("Switch", IE_Pressed, this, &APlayerCharacter::SwitchPlayer);
+	
 	// set up axis bindings
 	PlayerInputComponent->BindAxis("MoveForward", this, &APlayerCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &APlayerCharacter::MoveRight);
@@ -88,6 +93,10 @@ void APlayerCharacter::TakeDamage()
 			UGameplayStatics::OpenLevel(GetWorld(), "GameOverMap");
 		}
 	}
+}
+
+void APlayerCharacter::SwitchPlayer()
+{
 }
 
 void APlayerCharacter::ShotTimerExpired()

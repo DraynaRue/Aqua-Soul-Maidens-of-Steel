@@ -57,6 +57,9 @@ public:
 	// Damages the player, reducing their currentHP
 	void TakeDamage();
 
+	// Switch the player
+	void SwitchPlayer();
+
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
 
@@ -66,6 +69,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	class ASwitchController* PlayerCon;
 
 	/* Flag to control firing  */
 	uint32 bCanFire : 1;
