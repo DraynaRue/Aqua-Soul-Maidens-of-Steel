@@ -43,7 +43,7 @@ public:
 
 	/** Sound to play each time we fire */
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
-		class USoundBase* FireSound;
+	class USoundBase* FireSound;
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;

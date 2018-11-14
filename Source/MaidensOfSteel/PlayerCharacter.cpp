@@ -41,8 +41,8 @@ void APlayerCharacter::BeginPlay()
 	// Set current HP to the maximum set in the blueprint
 	CurrentHP = MaxHP;
 
-	ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
-	controller->AddPlayerToList(this);
+	//ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
+	//controller->AddPlayerToList(this);
 }
 
 // Called every frame
@@ -97,6 +97,8 @@ void APlayerCharacter::TakeDamage()
 
 void APlayerCharacter::SwitchPlayer()
 {
+	ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
+	controller->SwitchPlayer();
 }
 
 void APlayerCharacter::ShotTimerExpired()

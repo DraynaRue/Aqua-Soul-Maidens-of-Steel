@@ -14,12 +14,15 @@ AFixedCamera::AFixedCamera()
 	RootComponent = CameraComponent;
 }
 
+void AFixedCamera::SetPlayerCamera()
+{
+	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetViewTargetWithBlend(this);
+}
+
 // Called when the game starts or when spawned
 void AFixedCamera::BeginPlay()
 {
 	Super::BeginPlay();
-
-	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetViewTargetWithBlend(this);
 }
 
 // Called every frame
