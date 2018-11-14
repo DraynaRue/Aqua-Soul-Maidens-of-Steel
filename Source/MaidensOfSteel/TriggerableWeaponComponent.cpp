@@ -30,7 +30,7 @@ void UTriggerableWeaponComponent::Triggered(bool doFire)
 			params.Instigator = Cast<APawn>(GetOwner());
 
 
-			AMaidensOfSteelProjectile * spawnedactor = World->SpawnActor<AMaidensOfSteelProjectile>(ProjectileType, GetComponentLocation(), GetComponentRotation(), params);
+			ANormalProjectile* spawnedactor = World->SpawnActor<ANormalProjectile>(ProjectileType, GetComponentLocation(), GetComponentRotation(), params);
 			if (spawnedactor != nullptr)
 			{
 				// try and play the sound of specified

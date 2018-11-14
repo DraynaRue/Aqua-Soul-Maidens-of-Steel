@@ -6,7 +6,7 @@
 #include "Components/SceneComponent.h"
 #include "TriggerComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "MaidensOfSteelProjectile.h"
+#include "NormalProjectile.h"
 #include "TriggerableWeaponComponent.generated.h"
 
 
@@ -21,7 +21,7 @@ public:
 
 	// what type of projectile does this triggerbale weapon fire
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AMaidensOfSteelProjectile> ProjectileType;
+	TSubclassOf<class ANormalProjectile> ProjectileType;
 
 	// Sound to play each time we fire
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)

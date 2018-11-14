@@ -13,12 +13,12 @@ AFixedCamera::AFixedCamera()
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
 	RootComponent = CameraComponent;
 }
-
+/*
 void AFixedCamera::SetPlayerCamera()
 {
 	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetViewTargetWithBlend(this);
 }
-
+*/
 // Called when the game starts or when spawned
 void AFixedCamera::BeginPlay()
 {

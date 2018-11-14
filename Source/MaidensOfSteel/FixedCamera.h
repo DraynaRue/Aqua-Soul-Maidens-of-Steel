@@ -18,7 +18,7 @@ public:
 	// Sets default values for this pawn's properties
 	AFixedCamera();
 
-	static void SetPlayerCamera();
+	//void SetPlayerCamera();
 
 protected:
 	// Called when the game starts or when spawned
