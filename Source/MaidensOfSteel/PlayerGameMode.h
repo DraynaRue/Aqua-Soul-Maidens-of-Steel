@@ -13,4 +13,5 @@ class MAIDENSOFSTEEL_API APlayerGameMode : public AGameModeBase
 
 public:
 	APlayerGameMode();
+
 };
