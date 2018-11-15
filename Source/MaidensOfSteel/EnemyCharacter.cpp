@@ -74,7 +74,7 @@ void AEnemyCharacter::BeginPlay()
 void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+
 	TriggerComponent->doFire = true;
 }
 
