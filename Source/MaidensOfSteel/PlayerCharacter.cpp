@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PlayerCharacter.h"
-#include "MaidensOfSteelProjectile.h"
 #include "TimerManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
@@ -87,6 +86,19 @@ void APlayerCharacter::TakeDamage()
 	if (CurrentHP > 0)
 	{
 		CurrentHP--;
+
+		if (CurrentHP <= 0)
+		{
+			UGameplayStatics::OpenLevel(GetWorld(), "GameOverMap");
+		}
+	}
+}
+
+void APlayerCharacter::TakeDamage(float damageValue)
+{
+	if (CurrentHP > 0)
+	{
+		CurrentHP = CurrentHP - damageValue;
 
 		if (CurrentHP <= 0)
 		{

@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "NormalProjectile.h"
+#include "PlayerCharacter.h"
+#include "EnemyCharacter.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
@@ -44,6 +46,15 @@ void ANormalProjectile::OnHit(UPrimitiveComponent * HitComp, AActor * OtherActor
 
 	if ((OtherActor->ActorHasTag("Bounce") == false))
 	{
+		if ((OtherActor->ActorHasTag("Player1")) || (OtherActor->ActorHasTag("Player2")))
+		{
+			Cast<APlayerCharacter>(OtherActor)->TakeDamage(DamageValue);
+		}
+		else if ((OtherActor->ActorHasTag("Enemy")))
+		{
+			Cast<AEnemyCharacter>(OtherActor)->TakeDamage(DamageValue);
+		}
 		Destroy();
 	}
+	
 }

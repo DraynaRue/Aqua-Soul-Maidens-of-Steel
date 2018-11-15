@@ -56,6 +56,7 @@ public:
 
 	// Damages the player, reducing their currentHP
 	void TakeDamage();
+	void TakeDamage(float damageValue);
 
 	// Switch the player
 	void SwitchPlayer();
