@@ -38,7 +38,6 @@ void AEnemySpawner::Tick(float DeltaTime)
 		AEnemyCharacter* spawnedactor = World->SpawnActor<AEnemyCharacter>(EnemyType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
 		if (spawnedactor != nullptr)
 		{
-			spawnedactor->AddMovementInput(spawnedactor->GetActorRightVector(), 1);
 			GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
 		}
 

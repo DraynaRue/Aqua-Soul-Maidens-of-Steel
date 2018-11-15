@@ -75,6 +75,9 @@ void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FVector EnemyMov = FVector(0, -1, 0);
+	SetActorLocation(GetActorLocation() + EnemyMov);
+
 	TriggerComponent->doFire = true;
 }
 
