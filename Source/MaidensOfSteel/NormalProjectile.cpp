@@ -56,5 +56,4 @@ void ANormalProjectile::OnHit(UPrimitiveComponent * HitComp, AActor * OtherActor
 		}
 		Destroy();
 	}
-	
 }

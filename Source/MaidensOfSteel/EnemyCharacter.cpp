@@ -11,6 +11,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "TriggerComponent.h"
+#include "ScoreController.h"
 
 // Sets default values
 AEnemyCharacter::AEnemyCharacter()
@@ -52,6 +53,7 @@ void AEnemyCharacter::TakeDamage(float damageValue)
 		if (CurrentHP <= 0)
 		{
 			Destroy();
+			AScoreController::AddPlayerScore(1);
 		}
 	}
 }
