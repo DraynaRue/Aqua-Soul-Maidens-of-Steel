@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PlayerCharacter.h"
-#include "MaidensOfSteelProjectile.h"
 #include "TimerManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
@@ -95,6 +94,19 @@ void APlayerCharacter::TakeDamage()
 	}
 }
 
+void APlayerCharacter::TakeDamage(float damageValue)
+{
+	if (CurrentHP > 0)
+	{
+		CurrentHP = CurrentHP - damageValue;
+
+		if (CurrentHP <= 0)
+		{
+			UGameplayStatics::OpenLevel(GetWorld(), "GameOverMap");
+		}
+	}
+}
+
 void APlayerCharacter::SwitchPlayer()
 {
 	ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
@@ -108,7 +120,7 @@ void APlayerCharacter::ShotTimerExpired()
 
 void APlayerCharacter::MoveForward(float ForwardValue)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, FString::Printf(TEXT("%f"), ForwardValue));
+	//GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, FString::Printf(TEXT("%f"), ForwardValue));
 	if (ForwardValue != 0.0f)
 	{
 		// add movement in that direction

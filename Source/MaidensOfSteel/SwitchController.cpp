@@ -29,8 +29,6 @@ void ASwitchController::SwitchPlayer()
 		Player2->SetActorLocation(P1Pos);
 		Possess(Player2);
 
-		AFixedCamera::SetPlayerCamera();
-
 		isPlayer1 = false;
 	}
 	else if (!isPlayer1)
@@ -42,8 +40,6 @@ void ASwitchController::SwitchPlayer()
 		Player2->SetActorLocation(Player1->GetActorLocation());
 		Player1->SetActorLocation(P2Pos);
 		Possess(Player1);
-
-		AFixedCamera::SetPlayerCamera();
 
 		isPlayer1 = true;
 	}
