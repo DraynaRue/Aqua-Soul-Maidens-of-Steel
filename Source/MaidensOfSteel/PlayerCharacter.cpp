@@ -109,6 +109,7 @@ void APlayerCharacter::TakeDamage(float damageValue)
 
 void APlayerCharacter::SwitchPlayer()
 {
+	TriggerComponent->doFire = false;
 	ASwitchController* controller = Cast<ASwitchController>(GetWorld()->GetFirstPlayerController());
 	controller->SwitchPlayer();
 }
